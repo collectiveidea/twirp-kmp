@@ -1,6 +1,6 @@
 [versions]
 kotlin = "2.2.20"
-android-gradle-plugin = "8.5.2"
+android-gradle-plugin = "8.13.0"
 
 kotlinx-serialization = "1.7.3"
 ktor = "3.0.1"
