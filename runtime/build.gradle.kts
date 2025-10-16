@@ -14,7 +14,7 @@ kotlin {
     explicitApi()
 
     androidTarget {
-        publishAllLibraryVariants()
+        publishLibraryVariants("release")
     }
 
     jvm()
