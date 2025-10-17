@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
     `kotlin-dsl`
 }
@@ -7,10 +9,8 @@ repositories {
 }
 
 kotlin {
-    target {
-        compilations.all {
-            kotlinOptions.jvmTarget = JavaVersion.VERSION_1_8.toString()
-        }
+    compilerOptions {
+        jvmTarget = JvmTarget.JVM_1_8
     }
 }
 
