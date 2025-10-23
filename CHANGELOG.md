@@ -6,6 +6,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+ * No notable changes
+
+## [1.0.1] - 2024-10-23
+
+ * Update dependencies. See [#22](https://github.com/collectiveidea/twirp-kmp/pull/22).
+   * Bump Kotlin to 2.2.20
+   * Bump gradle to 8.14.3
+   * Runtime - Bump Ktor to 3.3.1
+   * Runtime - Bump kotlinx-serialization to 1.9.0
+   * Runtime - Bump Android Gradle Plugin to 8.13 
+
 ## [1.0.0] - 2024-11-26
 
  * Runtime - Refactor and cleanup `Any?` JSON deserialization. See [#19](https://github.com/collectiveidea/twirp-kmp/pull/19). 
