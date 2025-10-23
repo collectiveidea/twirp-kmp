@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 
 plugins {
     kotlin("multiplatform")
@@ -14,7 +15,7 @@ kotlin {
     explicitApi()
 
     androidTarget {
-        publishAllLibraryVariants()
+        publishLibraryVariants("release")
     }
 
     jvm()
@@ -26,13 +27,14 @@ kotlin {
 
     // Native targets, according to https://kotlinlang.org/docs/native-target-support.html
     // Tier 1
-    macosX64()
     macosArm64()
     iosSimulatorArm64()
-    iosX64()
+    iosArm64()
     // Tier 2
     linuxX64()
     linuxArm64()
+    macosX64()
+    iosX64()
     // watchosSimulatorArm64()
     // watchosX64()
     // watchosArm32()
@@ -40,7 +42,6 @@ kotlin {
     tvosSimulatorArm64()
     tvosX64()
     tvosArm64()
-    iosArm64()
     // Tier 3
     // androidNativeArm32()
     // androidNativeArm64()
@@ -49,15 +50,14 @@ kotlin {
     mingwX64()
     // watchosDeviceArm64()
 
-    listOf(
-        iosX64(),
-        iosArm64(),
-        iosSimulatorArm64(),
-    ).forEach {
-        it.binaries.framework {
-            baseName = "twirp-kmp-runtime"
+    targets
+        .withType<KotlinNativeTarget>()
+        .matching { it.konanTarget.family.isAppleFamily }
+        .configureEach {
+            binaries.framework {
+                baseName = "TwirpKmp"
+            }
         }
-    }
 
     sourceSets {
         val commonMain by getting {
@@ -78,7 +78,7 @@ kotlin {
 }
 
 android {
-    compileSdk = 34
+    compileSdk = 36
 
     defaultConfig {
         minSdk = 23
