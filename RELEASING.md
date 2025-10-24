@@ -34,4 +34,12 @@
    $ ./gradlew publish
    ```
 
-7. Visit [Sonatype Nexus](https://s01.oss.sonatype.org) and promote the artifact. (Close the staging repository, then Release it)
+7. Promote from Staging
+
+   ```
+   source ~/.gradle/gradle.properties
+   repository_key=$(curl -u $SONATYPE_USERNAME:$SONATYPE_PASSWORD -X GET "https://ossrh-staging-api.central.sonatype.com/manual/search/repositories?ip=any&profile_id=com.collectiveidea" | jq --raw-output ".repositories[0].key")
+   curl -u $SONATYPE_USERNAME:$SONATYPE_PASSWORD -X POST "https://ossrh-staging-api.central.sonatype.com/manual/upload/repository/$repository_key"
+   ```
+
+8. Visit https://central.sonatype.com/publishing/deployments and press Publish
