@@ -6,9 +6,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
- * No notable changes
+ * Bump ktlint to 1.8.0. See [#25](https://github.com/collectiveidea/twirp-kmp/pull/25).
 
-## [1.0.1] - 2024-10-23
+## [1.0.1] - 2025-10-23
 
  * Update dependencies. See [#22](https://github.com/collectiveidea/twirp-kmp/pull/22).
    * Bump Kotlin to 2.2.20
