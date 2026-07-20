@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-07-20
+
  * Update dependencies and migrate to AGP 9 / Gradle 9. See [#26](https://github.com/collectiveidea/twirp-kmp/pull/26).
    * Bump Kotlin to [2.4.10](https://kotlinlang.org/docs/whatsnew24.html)
    * Runtime - Bump kotlinx-serialization to [1.11.0](https://github.com/Kotlin/kotlinx.serialization/releases/tag/v1.11.0)
