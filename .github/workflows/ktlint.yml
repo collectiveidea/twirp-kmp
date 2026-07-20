@@ -16,10 +16,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: install ktlint 1.3.1
-        # https://pinterest.github.io/ktlint/1.3.1/install/cli/#download-using-curl
+      - name: install ktlint 1.8.0
+        # https://ktlint.github.io/ktlint/latest/install/cli/#download-using-curl
         run: |
-          curl -sSLO https://github.com/pinterest/ktlint/releases/download/1.3.1/ktlint
+          curl -sSLO https://github.com/ktlint/ktlint/releases/download/1.8.0/ktlint
           chmod a+x ktlint
           mv ktlint /usr/local/bin/
 
