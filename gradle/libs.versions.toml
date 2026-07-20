@@ -1,6 +1,6 @@
 [versions]
 kotlin = "2.4.10"
-android-gradle-plugin = "8.13.0"
+android-gradle-plugin = "9.3.0"
 
 kotlinx-serialization = "1.11.0"
 ktor = "3.5.1"
@@ -17,7 +17,7 @@ pbandk-runtime = { module = "pro.streem.pbandk:pbandk-runtime", version.ref = "p
 pbandk-protoc-gen = { module = "pro.streem.pbandk:protoc-gen-pbandk-lib", version.ref = "pbandk" }
 
 [plugins]
-android-library = { id = "com.android.library", version.ref = "android-gradle-plugin" }
+android-kotlin-multiplatform-library = { id = "com.android.kotlin.multiplatform.library", version.ref = "android-gradle-plugin" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }

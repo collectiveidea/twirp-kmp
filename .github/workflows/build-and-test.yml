@@ -40,11 +40,11 @@ jobs:
         run: ./gradlew twirp-kmp-generator:build
 
       - name: Test (Runtime)
-        run: ./gradlew twirp-kmp-runtime:testReleaseUnitTest
+        run: ./gradlew twirp-kmp-runtime:testAndroidHostTest
 
       - name: Archive Runtime Test Report
         if: success() || failure() # Allow canceling per https://stackoverflow.com/a/73015952
         uses: actions/upload-artifact@v4
         with:
-          name: testReleaseUnitTest report
-          path: runtime/build/reports/tests/testReleaseUnitTest
+          name: testAndroidHostTest report
+          path: runtime/build/reports/tests/testAndroidHostTest
