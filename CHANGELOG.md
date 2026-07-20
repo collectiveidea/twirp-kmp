@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+ * Update dependencies and migrate to AGP 9 / Gradle 9. See [#26](https://github.com/collectiveidea/twirp-kmp/pull/26).
+   * Bump Kotlin to [2.4.10](https://kotlinlang.org/docs/whatsnew24.html)
+   * Runtime - Bump kotlinx-serialization to [1.11.0](https://github.com/Kotlin/kotlinx.serialization/releases/tag/v1.11.0)
+   * Runtime - Bump Ktor to [3.5.1](https://github.com/ktorio/ktor/releases/tag/3.5.1)
+   * Migrate to AGP [9.3.0](https://developer.android.com/build/releases/agp-9-3-0-release-notes) and Gradle [9.6.1](https://docs.gradle.org/9.6.1/release-notes.html)
+   * pbandk was already on its latest release, [0.16.0](https://github.com/streem/pbandk/releases/tag/v0.16.0).
+   * **BREAKING** Runtime - Now publishes Java 11 bytecode (was Java 8); build against it with a JDK 11+ toolchain.
+   * **BREAKING** Runtime - Dropped the deprecated x86_64 Apple targets `macosX64` and `tvosX64`.
  * Bump ktlint to 1.8.0. See [#25](https://github.com/collectiveidea/twirp-kmp/pull/25).
 
 ## [1.0.1] - 2025-10-23
