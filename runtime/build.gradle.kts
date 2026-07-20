@@ -33,14 +33,12 @@ kotlin {
     // Tier 2
     linuxX64()
     linuxArm64()
-    macosX64()
     iosX64()
     // watchosSimulatorArm64()
     // watchosX64()
     // watchosArm32()
     // watchosArm64()
     tvosSimulatorArm64()
-    tvosX64()
     tvosArm64()
     // Tier 3
     // androidNativeArm32()
