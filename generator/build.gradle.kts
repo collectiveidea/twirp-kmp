@@ -24,11 +24,8 @@ dependencies {
     testImplementation(libs.kotlin.test.junit)
 }
 
-java {
-    sourceCompatibility = JavaVersion.VERSION_21
-    targetCompatibility = JavaVersion.VERSION_1_8
-}
-
+// This module has no Java sources, so a `java { }` compatibility block would be a no-op; the
+// Kotlin `jvmTarget` below is what emits the Java 8 bytecode for the published protoc-plugin jar.
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile>().configureEach {
     compilerOptions.jvmTarget.set(JvmTarget.JVM_1_8)
 }
@@ -44,7 +41,7 @@ tasks.jar {
     }
 }
 
-val javadocJar by tasks.registering(Jar::class) {
+val javadocJar = tasks.register<Jar>("javadocJar") {
     archiveClassifier.set("javadoc")
 }
 
