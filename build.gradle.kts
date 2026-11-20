@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.targets.js.yarn.YarnPlugin
+import org.jetbrains.kotlin.gradle.targets.js.yarn.YarnRootExtension
 
 plugins {
     alias(libs.plugins.kotlin.jvm) apply false
@@ -10,6 +12,15 @@ allprojects {
     repositories {
         mavenCentral()
         google()
+    }
+}
+
+// Patched versions of JS test-toolchain packages that Ktor (ws) and mocha (diff, serialize-javascript) pin below their security fixes; drop each once its upstream pin reaches it.
+plugins.withType<YarnPlugin> {
+    the<YarnRootExtension>().apply {
+        resolution("ws", "8.21.3")
+        resolution("diff", "8.0.4")
+        resolution("serialize-javascript", "7.1.4")
     }
 }
 
