@@ -4,16 +4,14 @@ import pbandk.gen.ServiceGenerator
 import java.nio.file.Path
 import java.nio.file.Paths
 
-var firstRun = true
-
 class Generator : ServiceGenerator {
     override fun generate(service: ServiceGenerator.Service): List<ServiceGenerator.Result> {
         service.debug { "Generating code for service ${service.name}" }
 
         val filePath: Path = Paths.get(service.filePath)
 
-        val interfaceMethods = emptyList<String>().toMutableList()
-        val implementationMethods = emptyList<String>().toMutableList()
+        val interfaceMethods = mutableListOf<String>()
+        val implementationMethods = mutableListOf<String>()
         service.methods.forEach { method ->
             val reqType = service.kotlinTypeMappings[method.inputType!!]!!
             val respType = service.kotlinTypeMappings[method.outputType!!]!!
@@ -68,7 +66,7 @@ class Generator : ServiceGenerator {
         kotlinPackageName: String?,
         serviceName: String,
         filePath: Path,
-        interfaceMethods: MutableList<String>,
+        interfaceMethods: List<String>,
     ) = ServiceGenerator.Result(
         otherFilePath = filePath.resolveSibling("$serviceName.kt").toString(),
         code = """
@@ -88,7 +86,7 @@ class Generator : ServiceGenerator {
         kotlinPackageName: String?,
         serviceName: String,
         filePath: Path,
-        implementationMethods: MutableList<String>,
+        implementationMethods: List<String>,
     ) = ServiceGenerator.Result(
         otherFilePath = filePath.resolveSibling("${serviceName}Impl.kt").toString(),
         code = """
