@@ -1,9 +1,9 @@
 [versions]
-kotlin = "2.4.10"
-android-gradle-plugin = "9.3.0"
+kotlin = "2.4.21"
+android-gradle-plugin = "9.5.2"
 
-kotlinx-serialization = "1.11.0"
-ktor = "3.5.1"
+kotlinx-serialization = "1.13.0"
+ktor = "3.6.1"
 pbandk = "0.16.0"
 
 [libraries]
