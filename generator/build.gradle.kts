@@ -16,8 +16,8 @@ dependencies {
     compileOnly(libs.pbandk.runtime)
     compileOnly(libs.pbandk.protoc.gen)
 
-    // Running the test requires `pbandk.gen.ServiceGenerator`, but the library
-    // itself only needs it for compile-time. See README.md#Usage for details.
+    // The tests run the generator against pbandk's types, which the library itself only needs at compile time (see README.md#Usage).
+    testImplementation(libs.pbandk.runtime)
     testImplementation(libs.pbandk.protoc.gen)
 
     testImplementation(libs.kotlin.test)
