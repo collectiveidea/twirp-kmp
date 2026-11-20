@@ -1,36 +1,37 @@
 import org.gradle.api.publish.maven.MavenPublication
+import org.gradle.kotlin.dsl.assign
 
 fun MavenPublication.configureTwirpKmpPOM(pomDescription: String) {
     val pomName = artifactId
 
     pom {
-        name.set(pomName)
-        description.set(pomDescription)
+        name = pomName
+        description = pomDescription
 
         licenses {
             license {
-                name.set("MIT")
-                url.set("https://opensource.org/licenses/MIT")
+                name = "MIT"
+                url = "https://opensource.org/licenses/MIT"
             }
         }
 
-        url.set("https://github.com/collectiveidea/twirp-kmp")
+        url = "https://github.com/collectiveidea/twirp-kmp"
 
         issueManagement {
-            system.set("Github")
-            url.set("https://github.com/collectiveidea/twirp-kmp/issues")
+            system = "Github"
+            url = "https://github.com/collectiveidea/twirp-kmp/issues"
         }
 
         scm {
-            connection.set("https://github.com/collectiveidea/twirp-kmp.git")
-            url.set("https://github.com/collectiveidea/twirp-kmp")
+            connection = "https://github.com/collectiveidea/twirp-kmp.git"
+            url = "https://github.com/collectiveidea/twirp-kmp"
         }
 
         developers {
             developer {
-                id.set("collectiveidea")
-                name.set("Collective Idea")
-                url.set("https://github.com/collectiveidea")
+                id = "collectiveidea"
+                name = "Collective Idea"
+                url = "https://github.com/collectiveidea"
             }
         }
     }

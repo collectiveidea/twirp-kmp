@@ -86,11 +86,11 @@ kotlin {
 // JDK 11+ toolchain to build against the published library. Java 8 is deprecated under AGP 9;
 // 11 is the modern-conservative floor with no on-device impact (D8 desugars to minSdk).
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile>().configureEach {
-    compilerOptions.jvmTarget.set(JvmTarget.JVM_11)
+    compilerOptions.jvmTarget = JvmTarget.JVM_11
 }
 
 val javadocJar = tasks.register<Jar>("javadocJar") {
-    archiveClassifier.set("javadoc")
+    archiveClassifier = "javadoc"
 }
 
 publishing {

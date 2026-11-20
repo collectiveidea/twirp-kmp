@@ -34,7 +34,7 @@ java {
 }
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile>().configureEach {
-    compilerOptions.jvmTarget.set(JvmTarget.JVM_1_8)
+    compilerOptions.jvmTarget = JvmTarget.JVM_1_8
 }
 
 tasks.jar {
@@ -49,7 +49,7 @@ tasks.jar {
 }
 
 val javadocJar = tasks.register<Jar>("javadocJar") {
-    archiveClassifier.set("javadoc")
+    archiveClassifier = "javadoc"
 }
 
 publishing {
