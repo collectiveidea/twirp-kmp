@@ -3,12 +3,71 @@
  */
 package com.collectiveidea.twirp
 
+import pbandk.gen.File
+import pbandk.gen.ServiceGenerator
+import pbandk.gen.pb.CodeGeneratorRequest
+import pbandk.wkt.ServiceDescriptorProto
+import java.util.Locale
 import kotlin.test.Test
+import kotlin.test.assertContains
 import kotlin.test.assertTrue
 
 class GeneratorTest {
     @Test fun someLibraryMethodReturnsTrue() {
         val classUnderTest = Generator()
         assertTrue(true) // TODO: Flesh out
+    }
+
+    @Test
+    fun method_names_lowercase_their_first_letter_regardless_of_the_default_locale() {
+        val results = withDefaultLocale(Locale.forLanguageTag("tr")) {
+            Generator().generate(serviceWithMethod("Index"))
+        }
+
+        assertContains(results[0].code, "suspend fun index(request: example.IndexRequest")
+        assertContains(results[1].code, "override suspend fun index(request: example.IndexRequest")
+    }
+
+    private fun serviceWithMethod(methodName: String) = ServiceGenerator.Service(
+        name = "ExampleService",
+        methods = listOf(
+            ServiceGenerator.Method(
+                name = methodName,
+                inputType = ".example.${methodName}Request",
+                outputType = ".example.${methodName}Response",
+                inputStreaming = false,
+                outputStreaming = false,
+            ),
+        ),
+        file = File(
+            name = "example.proto",
+            packageName = "example",
+            kotlinPackageName = "example",
+            version = 3,
+            types = emptyList(),
+            extensions = emptyList(),
+        ),
+        filePath = "example/example.kt",
+        existingCode = "",
+        kotlinTypeMappings = mapOf(
+            ".example.${methodName}Request" to "example.${methodName}Request",
+            ".example.${methodName}Response" to "example.${methodName}Response",
+        ),
+        raw = ServiceDescriptorProto(),
+        rawRequest = CodeGeneratorRequest(),
+        debugFn = {},
+    )
+
+    private fun <T> withDefaultLocale(
+        locale: Locale,
+        block: () -> T,
+    ): T {
+        val original = Locale.getDefault()
+        Locale.setDefault(locale)
+        try {
+            return block()
+        } finally {
+            Locale.setDefault(original)
+        }
     }
 }

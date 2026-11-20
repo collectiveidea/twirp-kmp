@@ -6,6 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+ * Generator - Lowercase generated method names the same way in every locale, so e.g. an `Index` RPC no longer generates `ındex` under a Turkish default locale. See [#31](https://github.com/collectiveidea/twirp-kmp/pull/31).
  * Update dependencies. See [#30](https://github.com/collectiveidea/twirp-kmp/pull/30).
    * Bump Kotlin to [2.4.21](https://kotlinlang.org/docs/whatsnew2420.html)
    * Runtime - Bump kotlinx-serialization to [1.13.0](https://github.com/Kotlin/kotlinx.serialization/releases/tag/v1.13.0)
